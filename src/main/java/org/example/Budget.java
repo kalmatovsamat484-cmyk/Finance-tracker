@@ -3,13 +3,17 @@ package org.example;
 public class Budget {
 
     private double totalIncome;
-    private double totalExpance;
+    private double totalExpanse;
+    private double totalSaving;
 
-    public Budget( double totalIncome, double totalExpance){
-        this.totalExpance=totalExpance;
+    public Budget( double totalIncome, double totalExpance, double totalSaving){
+        this.totalExpanse=totalExpance;
         this.totalIncome=totalIncome;
+        this.totalSaving=totalSaving;
     }
-    public double getBalabce(){
-        return totalIncome-totalExpance;
+    public double getBalance(){
+        return totalIncome-totalExpanse-totalSaving;
     }
+
+
 }
