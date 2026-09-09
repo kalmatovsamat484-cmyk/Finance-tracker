@@ -1,7 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class FinanceService {
 
@@ -9,60 +9,39 @@ public class FinanceService {
     ArrayList<Expense> expenses= new ArrayList<>();
     ArrayList<Savings> savings= new ArrayList<>();
     ArrayList<Expense> savingsExpenses = new ArrayList<>();
-    Scanner sc = new Scanner(System.in);
 
-    public void addIncome (){
+    public void addIncome (double amount){
 
-        System.out.println("""
-                Enter income:
-                0. Exit""");
-        double enterIncome= sc.nextDouble();
-        if (enterIncome < 0){
+        if (amount< 0){
             System.out.println("Income cannot be negative");
         }
         else
-            incomes.add(new Income(enterIncome));
+            incomes.add(new Income(amount));
     }
-    public void addExpenses (){
-        System.out.println("""
-                Choose a wallet:
-                1. Balance
-                2. Savings
-                0. Exit
-                """);
-        int choose = sc.nextInt();
-        if (choose == 1){
+    public void addExpenses (int wallet, double amount){
+
+        if (wallet == 1){
             System.out.println("""
                 Enter expense:
                 0. Exit""");
-            double enterExpense= sc.nextDouble();
-            if (enterExpense < 0){
+            if (amount < 0){
                 System.out.println("Expense cannot be negative");
             }
-            else if(getBalance() < enterExpense){
+            else if(getBalance() < amount){
                 System.out.println("Insufficient balance");
             }
             else
-                expenses.add(new Expense(enterExpense));
+                expenses.add(new Expense(amount));
         }
-        else if (choose==2) {
-            System.out.println("""
-                    Are you sure you want to use your savings?
-                    1.yes / 0.No
-                    """);
-            choose = sc.nextInt();
-            if (choose == 1) {
-                System.out.println("""
-                        Enter expense:
-                        0. Exit""");
-                double enterExpense = sc.nextDouble();
-                if (enterExpense < 0) {
+        else if (wallet==2) {
+
+                if (amount < 0) {
                     System.out.println("Expense cannot be negative");
-                } else if (getSavingBalanse() < enterExpense) {
+                } else if (getSavingBalanse() < amount) {
                     System.out.println("Insufficient balance");
                 } else
-                    savingsExpenses.add(new Expense(enterExpense));
-            }
+                    savingsExpenses.add(new Expense(amount));
+
 
         }
 
@@ -86,20 +65,16 @@ return sumIncomes;
         Budget budget = new Budget(getTotalIncome(), getTotalExpenses(), getTotalSavings());
         return budget.getBalance();
     }
-    public void addSavings(){
+    public void addSavings(double amount){
 
-        System.out.println("""
-                Enter the amount:
-                0. Exit""");
-        double enterSavings= sc.nextDouble();
-        if (enterSavings < 0){
+        if (amount < 0){
             System.out.println("Savings cannot be negative");
         }
-        else if(getBalance() < enterSavings){
+        else if(getBalance() < amount){
             System.out.println("Insufficient balance");
         }
         else
-            savings.add(new Savings(enterSavings));
+            savings.add(new Savings(amount));
     }
     public double getTotalSavings(){
         double sumSavings = 0;
