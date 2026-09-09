@@ -20,9 +20,6 @@ public class FinanceService {
     public void addExpenses (int wallet, double amount){
 
         if (wallet == 1){
-            System.out.println("""
-                Enter expense:
-                0. Exit""");
             if (amount < 0){
                 System.out.println("Expense cannot be negative");
             }
@@ -39,7 +36,7 @@ public class FinanceService {
 
                 if (amount < 0) {
                     System.out.println("Expense cannot be negative");
-                } else if (getSavingBalance() < amount) {
+                } else if (getSavingsBalance() < amount) {
                     System.out.println("Insufficient balance");
                 } else
                     savingsExpenses.add(new Expense(amount));
@@ -93,7 +90,7 @@ return sumIncomes;
         return sum;
     }
 
-    public double getSavingBalance(){
+    public double getSavingsBalance(){
        return getTotalSavings() - getTotalSavingsExpenses();
     }
 

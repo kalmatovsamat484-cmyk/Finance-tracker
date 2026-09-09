@@ -1,6 +1,5 @@
 package org.example;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class ConsoleMenu {
@@ -48,7 +47,9 @@ public class ConsoleMenu {
         if (wallet == 0) {
             return;
         } else if (wallet == 1) {
-            System.out.println("Enter Expense: ");
+            System.out.println("""
+                Enter expense:
+                0. Exit""");
             double amount = sc.nextDouble();
             financeService.addExpenses(wallet, amount);
         } else if (wallet == 2) {
@@ -63,6 +64,9 @@ public class ConsoleMenu {
                         Enter expense:
                         0. Exit""");
                 double amount = sc.nextDouble();
+                if(amount==0){
+                    return;
+                }
                 financeService.addExpenses(wallet, amount);
             }
 
@@ -71,7 +75,7 @@ public class ConsoleMenu {
     }
 
     private void MenuSaving() {
-        System.out.println(financeService.getSavingBalance());
+        System.out.println(financeService.getSavingsBalance());
         System.out.println("1. Add Savings");
         System.out.println("0. Exit");
         choose = sc.nextInt();
@@ -88,6 +92,9 @@ public class ConsoleMenu {
                         Enter income:
                         0. Exit""");
         double amount = sc.nextDouble();
+        if(amount==0){
+            return;
+        }
 
         financeService.addIncome(amount);
     }
