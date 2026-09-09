@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.ArrayList;
 
-
 public class FinanceService {
 
     ArrayList<Income> incomes= new ArrayList<>();
@@ -27,6 +26,9 @@ public class FinanceService {
             if (amount < 0){
                 System.out.println("Expense cannot be negative");
             }
+            else if(amount == 0){
+                return;
+            }
             else if(getBalance() < amount){
                 System.out.println("Insufficient balance");
             }
@@ -37,7 +39,7 @@ public class FinanceService {
 
                 if (amount < 0) {
                     System.out.println("Expense cannot be negative");
-                } else if (getSavingBalanse() < amount) {
+                } else if (getSavingBalance() < amount) {
                     System.out.println("Insufficient balance");
                 } else
                     savingsExpenses.add(new Expense(amount));
@@ -91,7 +93,7 @@ return sumIncomes;
         return sum;
     }
 
-    public double getSavingBalanse(){
+    public double getSavingBalance(){
        return getTotalSavings() - getTotalSavingsExpenses();
     }
 

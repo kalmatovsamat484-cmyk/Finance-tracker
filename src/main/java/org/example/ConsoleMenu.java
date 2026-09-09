@@ -71,7 +71,7 @@ public class ConsoleMenu {
     }
 
     private void MenuSaving() {
-        System.out.println(financeService.getSavingBalanse());
+        System.out.println(financeService.getSavingBalance());
         System.out.println("1. Add Savings");
         System.out.println("0. Exit");
         choose = sc.nextInt();
